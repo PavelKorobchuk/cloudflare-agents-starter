@@ -20,6 +20,7 @@ export const createNewChat = async ({
   const id = generateId();
   const chatID = env.Chat.idFromName(id);
   const stub = env.Chat.get(chatID);
+  // @ts-expect-error setOwner is not typed
   await stub.setOwner(userID);
   //insert the chat into the list
   await env.ChatList.put(
